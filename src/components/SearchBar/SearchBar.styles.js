@@ -34,7 +34,7 @@ const Content = styled.div`
     padding: 0 0 0 60px;
     border: 0;
     background: transparent;
-    font-size: 28px;
+    font-size: var(--fontLarge);
     color: var(--white);
 
     :focus {

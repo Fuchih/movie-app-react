@@ -13,12 +13,21 @@ export function useHomeFetch() {
   const [state, setState] = useState(initialState) // 電影資料
   const [loading, setLoading] = useState(false) // 讀取
   const [error, setError] = useState(false) // 錯誤
+  const [isLoadingMore, setIsLoadingMore] = useState(false) // 是否更多電影需要加載
 
   useEffect(() => {
     // 初次請求資料 & 搜尋
     setState(initialState)
     fetchMovies(1, searchTerm)
   }, [searchTerm])
+
+  useEffect(() => {
+    //加載更多電影
+    if (!isLoadingMore) return
+
+    fetchMovies(state.page + 1, searchTerm)
+    setIsLoadingMore(false) // 加載完後必需設回false，否則會持續加載
+  }, [isLoadingMore, searchTerm, state.page])
 
   const fetchMovies = async (page, searchTerm = '') => {
     try {
@@ -37,5 +46,5 @@ export function useHomeFetch() {
     setLoading(false) // 請求完成後
   }
 
-  return { state, loading, error, setSearchTerm }
+  return { state, loading, error, searchTerm, setSearchTerm, setIsLoadingMore }
 }
