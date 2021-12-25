@@ -6,6 +6,7 @@ import { useMovieFetch } from '../../hooks/useMovieFetch'
 import NoImage from '../../images/no_image.jpg'
 import BreadCrumb from '../BreadCrumb'
 import MovieInfo from '../MovieInfo'
+import MovieInfoBar from '../MovieInfoBar'
 
 export default function Movie() {
   const { movieId } = useParams() // <Route path="/:movieId" element={<Movie />} /> 取得動態參數:movieId
@@ -18,6 +19,7 @@ export default function Movie() {
     <>
       <BreadCrumb movieTitle={movie.title} />
       <MovieInfo movie={movie} />
+      <MovieInfoBar time={movie.runtime} budget={movie.budget} revenue={movie.revenue} />
     </>
   )
 }
