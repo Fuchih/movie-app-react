@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { useState, useEffect, useRef } from 'react'
 import { Wrapper, Content } from './SearchBar.styles'
 import searchIcon from '../../images/search-icon.svg'
@@ -8,7 +9,7 @@ export default function SearchBar({ setSearchTerm }) {
 
   useEffect(() => {
     // 跳過初次渲染
-    if(initial.current) {
+    if (initial.current) {
       initial.current = false
       return
     }
@@ -28,4 +29,8 @@ export default function SearchBar({ setSearchTerm }) {
       </Content>
     </Wrapper>
   )
+}
+
+SearchBar.propTypes = {
+  setSearchTerm: PropTypes.func
 }

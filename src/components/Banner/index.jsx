@@ -1,4 +1,4 @@
-import React from 'react'
+import PropTypes from 'prop-types'
 import { Wrapper, Content, Text } from './Banner.styles'
 
 export default function Banner({ image, title, text }) {
@@ -12,4 +12,10 @@ export default function Banner({ image, title, text }) {
       </Content>
     </Wrapper>
   )
+}
+
+Banner.propTypes = {
+  image: PropTypes.string,
+  title: PropTypes.string,
+  text: PropTypes.string
 }

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { calcTime, convertMoney } from '../../helper'
 import { Wrapper, Content } from './MovieInfoBar.styles'
 
@@ -17,4 +18,10 @@ export default function MovieInfoBar({ time, budget, revenue }) {
       </Content>
     </Wrapper>
   )
+}
+
+MovieInfoBar.propTypes = {
+  time: PropTypes.number,
+  budget: PropTypes.number,
+  revenue: PropTypes.number
 }

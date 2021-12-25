@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 import Logo from '../../images/react-movie-logo.svg'
 import TMBDLogo from '../../images/tmdb_logo.svg'

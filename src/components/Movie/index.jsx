@@ -7,7 +7,7 @@ import NoImage from '../../images/no_image.jpg'
 import BreadCrumb from '../BreadCrumb'
 import MovieInfo from '../MovieInfo'
 import MovieInfoBar from '../MovieInfoBar'
-import Actor from '../../Actor'
+import Actor from '../Actor'
 
 export default function Movie() {
   const { movieId } = useParams() // <Route path="/:movieId" element={<Movie />} /> 取得動態參數:movieId

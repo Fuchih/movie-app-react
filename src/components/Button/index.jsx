@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { Wrapper } from './Button.styles'
 
 export default function Button({ text, callback }) {
@@ -6,4 +7,9 @@ export default function Button({ text, callback }) {
       {text}
     </Wrapper>
   )
+}
+
+Button.propTypes = {
+  text: PropTypes.string,
+  callback: PropTypes.func
 }
