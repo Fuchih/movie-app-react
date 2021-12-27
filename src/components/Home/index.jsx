@@ -9,17 +9,17 @@ import SearchBar from '../SearchBar'
 import Button from '../Button'
 
 export default function Home() {
-  const { state, loading, error, searchTerm, setSearchTerm, setIsLoadingMore } = useHomeFetch()
+  const { movieData, loading, error, searchTerm, setSearchTerm, setIsLoadingMore } = useHomeFetch()
 
   if (error) return <div>Oops! Something went wrong ... try again later!</div> // 請求出錯時 返回此數據避免App崩潰
 
   return (
     <>
-      {state.results[0] ? ( // 非同步任務 加載完成後再渲染UI
+      {movieData.results[0] ? ( // 非同步任務 加載完成後再渲染UI
         <Banner // 初始為目前最紅的電影 or 搜尋項目裡最紅的電影
-          image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${state.results[0].backdrop_path}`}
-          title={state.results[0].original_title}
-          text={state.results[0].overview}
+          image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${movieData.results[0].backdrop_path}`}
+          title={movieData.results[0].original_title}
+          text={movieData.results[0].overview}
         />
       ) : null}
 
@@ -28,7 +28,7 @@ export default function Home() {
 
       {/* 依目前為初始畫面或搜尋畫面顯示相對應描述 */}
       <Grid header={searchTerm ? 'Search Results' : 'Popular Movies'}>
-        {state.results.map((movie) => (
+        {movieData.results.map((movie) => (
           // 遍歷所有已請求電影資料
           <Thumb
             key={movie.id}
@@ -44,7 +44,7 @@ export default function Home() {
       {loading && <Spinner />}
 
       { // 目前頁面數小於總頁面數且不處於Loading狀態時加載按鈕可用
-        state.page < state.total_pages
+        movieData.page < movieData.total_pages
         && !loading
         && <Button text="Load More" callback={() => setIsLoadingMore(true)}></Button>
       }

@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
+import { isPersistedState } from '../helper'
 import API from '../API'
 
 function useMovieFetch(movieId) {
@@ -27,11 +28,25 @@ function useMovieFetch(movieId) {
     } catch (error) {
       setError(true)
     }
+
+    // 將讀取後的數據保存到sessionStorage，不用再重複讀取數據
+    const sessionState = isPersistedState(movieId)
+
+    if (sessionState) {
+      setState(sessionState)
+      setLoading(false)
+      return
+    }
   }, [movieId])
 
   useEffect(() => {
     fetchMovie()
   }, [movieId, fetchMovie])
+
+  useEffect(() => {
+    // 將讀取後的數據保存到sessionStorage，不用再重複讀取數據
+    sessionStorage.setItem(movieId, JSON.stringify(state))
+  }, [movieId, state])
 
   return { state, loading, error }
 }
