@@ -3,6 +3,7 @@ import Thumb from '../Thumb'
 import { IMAGE_BASE_URL, POSTER_SIZE } from '../../config'
 import NoImage from '../../images/no_image.jpg'
 import { Wrapper, Content, Text } from './MovieInfo.styles'
+import Rate from '../Rate'
 
 export default function MovieInfo({ movie }) {
   return (
@@ -25,6 +26,10 @@ export default function MovieInfo({ movie }) {
                 <p key={director.credit_id}>{director.name}</p>
               ))}
             </div>
+          </div>
+          <div>
+            <p>Rate Movie</p>
+            <Rate />
           </div>
         </Text>
       </Content>

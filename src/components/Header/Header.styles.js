@@ -12,6 +12,18 @@ const Content = styled.div`
   max-width: var(--maxWidth);
   margin: 0 auto;
   padding: 20px 0;
+  color: var(--white);
+
+  a {
+    text-decoration: none;
+    color: var(--white);
+  }
+
+  .login {
+    padding: 10px 20px;
+    border: 1px solid;
+    border-radius: 5px;
+  }
 `
 
 const LogoImg = styled.img`
